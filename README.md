@@ -193,4 +193,86 @@ Without value argument: None.
     _.el(selector).val('some value')
     => _.el(selector).val() === 'some value' -> true
     
-   
+### text
+
+**\_.el(selector).text([text])**
+
+set the text content of the selected element(s).
+or get the text content of selected element(s).
+
+**Returns:**
+
+With text argument: None.
+Without text argument: String of text content.
+
+**Example:**
+
+    console.log(_.el(selector).text());
+    
+    _.el(selector).text('some text')
+    => _.el(selector).text() === 'some text' -> true
+
+### on
+
+**\_.el(selector).on( event, callback )**
+
+add a event listener to selected element(s).
+
+**Returns:**
+
+None
+
+**Example:**
+
+    _.el(selector).on('click', function(){ alert('clicked') });
+
+### off
+
+**\_.el(selector).on( event, callback )**
+
+remove a event listener from selected element(s).
+
+**Returns:**
+
+None
+
+**Example:**
+
+    _.el(selector).off('click', function(){ alert('clicked') });
+
+
+### attr
+
+**\_.el(selector).attr( name, [value] )**
+
+set the attribute to the selected element(s).
+or get the attribute value from selected element(s)
+
+**Returns:**
+
+None
+
+**Example:**
+
+    _.el(selector).attr('id', 'someThing');
+    _.el(selector).attr('id') === 'someThing' => true;
+
+
+### removeAttr
+
+**\_.el(selector).removeAttr( name )**
+
+remove an attribute from the selected element(s).
+
+**Returns:**
+
+None
+
+**Example:**
+
+    _.el(selector).attr('id', 'someThing');
+    _.el(selector).attr('id') === 'someThing' => true;
+    
+    _.el(selector).removeAttr('id');
+    _.el(selector).attr('id') === undefined => true;
+        
