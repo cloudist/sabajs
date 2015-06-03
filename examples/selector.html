@@ -98,14 +98,16 @@
         This is test Aera
     </p>
 
-    <button id="set-html-btn">Set HTML to 'Hello World: Current Time'</button>
+    <button id="set-html-btn">Set HTML to 'Hello World: Current Time' Only wroks once.</button>
     <button id="get-html-btn">get HTML</button>
     <button id="empty-btn">Empty</button>
 
     <script>
-        _.el('#set-html-btn')[0].addEventListener('click', function () {
+        var fn = function () {
             _.el('#text-block').html('Hello World:' + new Date().getTime());
-        });
+            _.el(this).off('click', fn);
+        };
+        _.el('#set-html-btn').on('click', fn);
 
         _.el('button#get-html-btn')[0].addEventListener('click', function () {
             alert(_.el('#text-block').html());
@@ -114,11 +116,36 @@
         _.el('button#empty-btn')[0].addEventListener('click', function () {
             _.el('#text-block').empty();
         });
-
     </script>
 
 </div>
 
+<div>
+    <h2>Attr</h2>
+
+    <p id="attr-block">
+        attr test
+    </p>
+
+
+    <script>
+        _.el('#attr-block').attr('test', 'test');
+        _.el('#attr-block').attr('test1', 'test1');
+        _.el('#attr-block').removeAttr('test');
+    </script>
+</div>
+
+<div>
+    <h2>Text</h2>
+
+    <span id="span-block">
+        Text1
+    </span>
+
+    <script>
+        _.el('#span-block').text('Something Else');
+    </script>
+</div>
 
 </body>
 </html>
