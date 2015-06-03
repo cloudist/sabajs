@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../saba.min.js"></script>
+    <style>
+        .error {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="status">Selector Demo</h1>
+
+<div>
+    <h2>select the sub elements</h2>
+
+    <ul id="selector">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+    </ul>
+
+    <button id="add-btn">Add Class</button>
+    <button id="remove-btn">Remove Class</button>
+    <script>
+        //      Add Class
+        _.el('#add-btn')[0].addEventListener('click', function () {
+            if (!_.el('#selector>li').hasClass('error'))
+                _.el('#selector>li').addClass('error');
+        });
+        //      Remove Class
+        _.el('#remove-btn')[0].addEventListener('click', function () {
+            if (_.el('#selector>li').hasClass('error'))
+                _.el('#selector>li').removeClass('error');
+        });
+
+    </script>
+</div>
+
+
+<div>
+    <h2>Select By Class</h2>
+
+    <ul>
+        <li class="klass">001</li>
+        <li>002</li>
+        <li class="klass">003</li>
+        <li class="klass">004</li>
+    </ul>
+
+    <button id="by-class-add-btn">Add Class</button>
+    <button id="by-class-remove-btn">Remove Class</button>
+    <script>
+        //      Add Class
+        _.el('#by-class-add-btn')[0].addEventListener('click', function () {
+            _.el('.klass').addClass('error');
+        });
+        //      Remove Class
+        _.el('#by-class-remove-btn')[0].addEventListener('click', function () {
+            _.el('.klass').removeClass('error');
+        });
+
+    </script>
+
+</div>
+
+<div>
+    <h2>Val</h2>
+
+    <div>
+        <input type="text" value="value1" id="input1"/>
+        <input type="text" value="value2" id="input2"/>
+    </div>
+
+    <button id="get-value-btn">Get input1 value</button>
+    <button id="set-value-btn">Set input2 value To 'New Value'</button>
+
+    <script>
+        _.el('button#get-value-btn')[0].addEventListener('click', function () {
+            alert(_.el('#input1').val());
+        });
+
+        _.el('button#set-value-btn')[0].addEventListener('click', function () {
+            _.el('#input2').val('New Value')
+        });
+    </script>
+</div>
+
+<div>
+    <h2>Empty & HTML </h2>
+
+    <p id="text-block">
+        This is test Aera
+    </p>
+
+    <button id="set-html-btn">Set HTML to 'Hello World: Current Time'</button>
+    <button id="get-html-btn">get HTML</button>
+    <button id="empty-btn">Empty</button>
+
+    <script>
+        _.el('#set-html-btn')[0].addEventListener('click', function () {
+            _.el('#text-block').html('Hello World:' + new Date().getTime());
+        });
+
+        _.el('button#get-html-btn')[0].addEventListener('click', function () {
+            alert(_.el('#text-block').html());
+        });
+
+        _.el('button#empty-btn')[0].addEventListener('click', function () {
+            _.el('#text-block').empty();
+        });
+
+    </script>
+
+</div>
+
+
+</body>
+</html>

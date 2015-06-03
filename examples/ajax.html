@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../saba.min.js"></script>
+    <style>
+        #code{
+            background-color: #ccc;
+        }
+        .error {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+
+<h1>Ajax Demo</h1>
+
+<p>
+    api will request a local jquery js file. and fill the following block with the content.
+</p>
+
+
+<code id="code">
+    Waiting for content...
+</code>
+
+
+<script>
+    _.ajax({
+        url: '../saba.js'
+    }).done(function (data) {
+        _.el('#code').html(data);
+    }).fail(function (xhr) {
+        _.el('#code').html('error:' + xhr);
+        _.el('#code').addClass('error');
+    });
+
+</script>
+</body>
+</html>
