@@ -1,16 +1,13 @@
 // Saba javascript library.
 //
-// Tomi Li 2015
+// Tomi Li 2015 TODO
 // MIT License
 //
 // Inspired by Underscore, Qwery.
 
 (function () {
 
-        // Baseline setup
-        // --------------
         var B, classList, classCache = {};
-        // Save bytes in the minified (but not gzipped) version:
 
         function isFunction(value) {
             return typeof value == "function"
@@ -31,6 +28,16 @@
         function classRE(name) {
             return name in classCache ?
                 classCache[name] : (classCache[name] = new RegExp('(^|\\s)' + name + '(\\s|$)'))
+        }
+
+        function getXMLHttpRequest() {
+            if (window.ActiveXObject) {
+                return new ActiveXObject('Microsoft.XMLHTTP');
+            }
+            if (window.XMLHttpRequest) {
+                return new XMLHttpRequest();
+            }
+            throw new Error('Cannot create XML HTTP request');
         }
 
         // Create a safe reference to the object for use below.
@@ -446,29 +453,23 @@
                     host: {},
                     process: function (ops) {
                         var self = this;
-                        this.xhr = null;
-                        if (window.ActiveXObject) {
-                            this.xhr = new ActiveXObject('Microsoft.XMLHTTP');
-                        }
-                        else if (window.XMLHttpRequest) {
-                            this.xhr = new XMLHttpRequest();
-                        }
-                        if (this.xhr) {
-                            this.xhr.onreadystatechange = function () {
-                                if (self.xhr.readyState == 4 && self.xhr.status == 200) {
-                                    var result = self.xhr.responseText;
-                                    if (ops.json === true && typeof JSON != 'undefined') {
-                                        result = JSON.parse(result);
-                                    }
-                                    self.doneCallback && self.doneCallback.apply(self.host, [result, self.xhr]);
-                                } else if (self.xhr.readyState == 4) {
-                                    self.failCallback && self.failCallback.apply(self.host, [self.xhr]);
+
+                        this.xhr = getXMLHttpRequest();
+                        this.xhr.onreadystatechange = function () {
+                            if (self.xhr.readyState == 4 && self.xhr.status == 200) {
+                                var result = self.xhr.responseText;
+                                if (ops.json === true && typeof JSON != 'undefined') {
+                                    result = JSON.parse(result);
                                 }
-                                self.alwaysCallback && self.alwaysCallback.apply(self.host, [self.xhr]);
+                                self.doneCallback && self.doneCallback.apply(self.host, [result, self.xhr]);
+                            } else if (self.xhr.readyState == 4) {
+                                self.failCallback && self.failCallback.apply(self.host, [self.xhr]);
                             }
+                            self.alwaysCallback && self.alwaysCallback.apply(self.host, [self.xhr]);
                         }
+
                         if (ops.method == 'get') {
-                            this.xhr.open("GET", ops.url + getParams(ops.data, ops.url), true);
+                            this.xhr.open('GET', ops.url + getParams(ops.data, ops.url), true);
                         } else {
                             this.xhr.open(ops.method, ops.url, true);
                             this.setHeaders({
@@ -479,8 +480,9 @@
                         if (ops.headers && typeof ops.headers == 'object') {
                             this.setHeaders(ops.headers);
                         }
+
                         setTimeout(function () {
-                            ops.method == 'get' ? self.xhr.send() : self.xhr.send(getParams(ops.data));
+                            ops.method === 'get' ? self.xhr.send() : self.xhr.send(getParams(ops.data));
                         }, 20);
                         return this;
                     },
@@ -498,7 +500,7 @@
                     },
                     setHeaders: function (headers) {
                         for (var name in headers) {
-                            this.xhr && this.xhr.setRequestHeader(name, headers[name]);
+                            this.xhr.setRequestHeader(name, headers[name]);
                         }
                     }
                 };
@@ -509,7 +511,7 @@
         base.ajax = Ajax.request;
 
         /**
-         * Funcations
+         * Functions
          */
         B = function (selector) {
             var dom = Qwery(selector);
@@ -606,7 +608,7 @@
             }
         };
 
-        // Establish the root object;
+        // Establish the root object
         var root = this;
         root._ = base;
 
