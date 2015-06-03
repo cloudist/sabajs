@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="../saba.min.js"></script>
+    <script src="../saba.js"></script>
     <style>
         .error {
             background-color: #ff0000;
@@ -29,12 +29,12 @@
     <button id="remove-btn">Remove Class</button>
     <script>
         //      Add Class
-        _.el('#add-btn')[0].addEventListener('click', function () {
+        _.el('#add-btn').on('click', function () {
             if (!_.el('#selector>li').hasClass('error'))
                 _.el('#selector>li').addClass('error');
         });
         //      Remove Class
-        _.el('#remove-btn')[0].addEventListener('click', function () {
+        _.el('#remove-btn').on('click', function () {
             if (_.el('#selector>li').hasClass('error'))
                 _.el('#selector>li').removeClass('error');
         });
@@ -57,11 +57,11 @@
     <button id="by-class-remove-btn">Remove Class</button>
     <script>
         //      Add Class
-        _.el('#by-class-add-btn')[0].addEventListener('click', function () {
+        _.el('#by-class-add-btn').on('click', function () {
             _.el('.klass').addClass('error');
         });
         //      Remove Class
-        _.el('#by-class-remove-btn')[0].addEventListener('click', function () {
+        _.el('#by-class-remove-btn').on('click', function () {
             _.el('.klass').removeClass('error');
         });
 
@@ -81,11 +81,11 @@
     <button id="set-value-btn">Set input2 value To 'New Value'</button>
 
     <script>
-        _.el('button#get-value-btn')[0].addEventListener('click', function () {
+        _.el('button#get-value-btn').on('click', function () {
             alert(_.el('#input1').val());
         });
 
-        _.el('button#set-value-btn')[0].addEventListener('click', function () {
+        _.el('button#set-value-btn').on('click', function () {
             _.el('#input2').val('New Value')
         });
     </script>
@@ -109,11 +109,11 @@
         };
         _.el('#set-html-btn').on('click', fn);
 
-        _.el('button#get-html-btn')[0].addEventListener('click', function () {
+        _.el('button#get-html-btn').on('click', function () {
             alert(_.el('#text-block').html());
         });
 
-        _.el('button#empty-btn')[0].addEventListener('click', function () {
+        _.el('button#empty-btn').on('click', function () {
             _.el('#text-block').empty();
         });
     </script>
@@ -142,8 +142,18 @@
         Text1
     </span>
 
+    <button id="change-text">Change Text</button>
+    <button id="show-text">Show Text</button>
+
     <script>
-        _.el('#span-block').text('Something Else');
+        _.el('#change-text').on('click', function () {
+            _.el('#span-block').text(new Date().getTime());
+        });
+
+        _.el('#show-text').on('click', function () {
+            alert(_.el('#span-block').text());
+        });
+
     </script>
 </div>
 

@@ -666,12 +666,12 @@
                 }, this)
             },
             text: function (text) {
-                return 0 in arguments ?
+                return text !== undefined ?
                     this.each(function (idx) {
-                        var newText = funcArg(this, text, idx, this.textContent);
-                        this.textContent = newText == null ? '' : '' + newText
+                        var newText = text;
+                        this.textContent = this.innerText = newText;
                     }) :
-                    (0 in this ? this[0].textContent : null)
+                    (0 in this ? this[0].textContent || this[0].innerText : null)
             }
         };
 
