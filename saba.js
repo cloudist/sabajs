@@ -1,10 +1,9 @@
-// Saba javascript library.
+// SabaJS JavaScript Library.
 //
-// 2015 Cloudist Co.,Ltd.
-// MIT License
+// Copyright (c) 2015 Cloudist Technology Co., Ltd.
+// Released under the MIT license
 //
-// @author: lishuo@cloudist.cc
-// Inspired by Underscore, Qwery.
+// Author: lishuo@cloudist.cc
 
 (function () {
 

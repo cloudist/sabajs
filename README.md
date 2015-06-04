@@ -2,10 +2,12 @@
 
 ![SabaJS](vendor/icon.png)
 
+SabaJS is a light-weight cross-platform JavaScript library that provides some frequently used functions.
 
->Designed As a Light-weight Cross-platform JS library.
+Insipred by Qwery and Underscore.
 
-**Browser Support**
+
+## Browser Support
 
 -   IE 6+
 -   Chrome 1+
@@ -13,37 +15,46 @@
 -   Firefox 4+
 
 
-## AJAX
+## API
 
-**Useage:**
+### AJAX
+
+**Usage:**
 
     _.ajax({options})
 
 **Example:**
 
     _.ajax({
-            url: URL,
-            method: 'get' // [get, post, ...]
-        }).fail(function (xhr) {
-            //do with xhr
-           
-        }).done(function (data) {
-            // do with data
-        });
+      url: URL,
+      method: 'get'
+    }).fail(function (xhr) {
+      // do with xhr
+    }).done(function (data) {
+      // do with data
+    });
 
-## Element Selector
+**Options:**
 
-**Useage:**
+    url: URL string
+    method: HTTP method ['get', 'post']
+    headers: HTTP headers
+    data: HTTP request data
+    json: boolean, trigger JSON response wrapping
 
-    _.el(selector)    
-    
+### Element Selector
+
+**Usage:**
+
+    _.el(selector)
+
 **Selector Support:**
 
     /* basic */
     #foo {} /* id */
     .bar {} /* class */
     a#foo.bar {} /* element attribute combinations */
-    
+
     /* attributes */
     #foo a[href] {} /* simple */
     #foo a[href=bar] {} /* attribute values */
@@ -52,61 +63,61 @@
     #foo a[href^="http://"] {} /* attribute starts with */
     #foo a[href$=com] {} /* attribute ends with */
     #foo a[href*=twitter] /* {} attribute wildcards */
-    
+
     /* descendants */
     #foo a {} /* all descendants */
     ul#list > li {} /* direct children */
-    
+
     /* siblings */
     span ~ strong {} /* all adjacent */
     p + p {} /* immediate adjacent */
-    
+
     /* combos */
     div,p {}
-    
+
     /* variations */
     #foo.bar.baz {}
     div#baz.thunk a[-data-info*="hello world"] span + strong {}
     #thunk[title$='huzza'] {}
-    
-## Element Methods
 
-### html
+### Element Methods
 
-**\_.el(selector).html([HTML])** 
+#### html
 
-return the inner HTML of element or set the element's HTML    
+**\_.el(selector).html([HTML])**
+
+return the inner HTML of element or set the element's HTML
 
 **Returns:**
 
-With HTML argument: will return a string. 
+With HTML argument: will return a string.
 Without HTML argument will return None.
 
 **Example:**
 
     _.el(selector).html()
     => return the html of the selected element or the first elements selected.
-    
+
     _.el(selector).html(HTML_String)
     => set the innerHTML to the specified HTML string.
-    
 
-### each   
+
+#### each
 
 **\_.el(selector).each( callback(index, item ) )**
 
 
 **Returns:**
 
-None.
+None
 
 **Example:**
 
-    _.el(selector).each(function(index, item){ 
-        console.log(item);
+    _.el(selector).each(function(index, item){
+      console.log(item);
     })
 
-### empty
+#### empty
 
 **\_.el(selector).empty()**
 
@@ -122,8 +133,8 @@ None
     => _.el(selector).html() === '' -> true
 
 
-### addClass
-    
+#### addClass
+
 **\_.el(selector).addClass(className)**
 
 add a class to the selected element(s).
@@ -138,7 +149,7 @@ None
     => _.el(selector).hasClass('active') -> true
 
 
-### hasClass
+#### hasClass
 
 **\_.el(selector).hasClass(className)**
 
@@ -146,7 +157,7 @@ add a class to the selected element(s).
 
 **Returns:**
 
-Boolean.
+Boolean
 
 **Example:**
 
@@ -155,7 +166,7 @@ Boolean.
 
 
 
-### removeClass
+#### removeClass
 
 **\_.el(selector).removeClass(className)**
 
@@ -163,7 +174,7 @@ remove a class from the selected element(s).
 
 **Returns:**
 
-None.
+None
 
 **Example:**
 
@@ -171,10 +182,10 @@ None.
     => _.el(selector).hasClass('active') -> true
     _.el(selector).removeClass('active')
     => _.el(selector).hasClass('active') -> false
-  
-    
 
-### val
+
+
+#### val
 
 **\_.el(selector).val([value])**
 
@@ -189,11 +200,11 @@ Without value argument: None.
 **Example:**
 
     console.log(_.el(selector).val());
-    
+
     _.el(selector).val('some value')
     => _.el(selector).val() === 'some value' -> true
-    
-### text
+
+#### text
 
 **\_.el(selector).text([text])**
 
@@ -208,11 +219,11 @@ Without text argument: String of text content.
 **Example:**
 
     console.log(_.el(selector).text());
-    
+
     _.el(selector).text('some text')
     => _.el(selector).text() === 'some text' -> true
 
-### on
+#### on
 
 **\_.el(selector).on( event, callback )**
 
@@ -224,9 +235,9 @@ None
 
 **Example:**
 
-    _.el(selector).on('click', function(){ alert('clicked') });
+    _.el(selector).on('click', function() { alert('clicked') });
 
-### off
+#### off
 
 **\_.el(selector).on( event, callback )**
 
@@ -238,10 +249,10 @@ None
 
 **Example:**
 
-    _.el(selector).off('click', function(){ alert('clicked') });
+    _.el(selector).off('click', function() { alert('clicked') });
 
 
-### attr
+#### attr
 
 **\_.el(selector).attr( name, [value] )**
 
@@ -258,7 +269,7 @@ None
     _.el(selector).attr('id') === 'someThing' => true;
 
 
-### removeAttr
+#### removeAttr
 
 **\_.el(selector).removeAttr( name )**
 
@@ -272,7 +283,6 @@ None
 
     _.el(selector).attr('id', 'someThing');
     _.el(selector).attr('id') === 'someThing' => true;
-    
+
     _.el(selector).removeAttr('id');
     _.el(selector).attr('id') === undefined => true;
-        
