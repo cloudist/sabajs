@@ -6,6 +6,9 @@ SabaJS is a light-weight cross-platform JavaScript library that provides some fr
 
 Insipred by Qwery and Underscore.
 
+> saba: 青花鱼  
+> 作者 Tomi 在居酒屋做兼职，那里的烤青花鱼是我们的最爱。
+
 
 ## Browser Support
 
@@ -90,8 +93,7 @@ return the inner HTML of element or set the element's HTML
 
 **Returns:**
 
-With HTML argument: will return a string.
-
+With HTML argument: will return a string.  
 Without HTML argument will return None.
 
 **Example:**
@@ -195,8 +197,7 @@ or set the value to selected element(s).
 
 **Returns:**
 
-With value argument: will return a string that is the value of the selected element(s).
-
+With value argument: will return a string that is the value of the selected element(s).  
 Without value argument: None.
 
 **Example:**
@@ -215,7 +216,7 @@ or get the text content of selected element(s).
 
 **Returns:**
 
-With text argument: None.
+With text argument: None.  
 Without text argument: String of text content.
 
 **Example:**
