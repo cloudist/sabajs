@@ -91,6 +91,7 @@ return the inner HTML of element or set the element's HTML
 **Returns:**
 
 With HTML argument: will return a string.
+
 Without HTML argument will return None.
 
 **Example:**
@@ -195,6 +196,7 @@ or set the value to selected element(s).
 **Returns:**
 
 With value argument: will return a string that is the value of the selected element(s).
+
 Without value argument: None.
 
 **Example:**
