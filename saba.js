@@ -391,9 +391,9 @@
                         }
                 }()
                 , hasByClass = !!doc[byClass]
-            // has native qSA support
+                // has native qSA support
                 , hasQSA = doc.querySelector && doc[qSA]
-            // use native qSA
+                // use native qSA
                 , selectQSA = function (selector, root) {
                     var result = [], ss, e
                     try {
@@ -412,7 +412,7 @@
                     }
                     return selectNonNative(selector, root)
                 }
-            // no native selector support
+                // no native selector support
                 , selectNonNative = function (selector, root) {
                     var result = [], items, m, i, l, r, ss
                     selector = selector.replace(normalizr, '$1')
@@ -655,18 +655,18 @@
                 })
             },
             on: function (event, fn) {
-                return this.each(function (index, el) {
+                return this.each(function (idx, el) {
                     addEvent(el, event, fn);
                 }, this)
             },
             off: function (event, fn) {
-                return this.each(function (index, el) {
+                return this.each(function (idx, el) {
                     removeEvent(el, event, fn);
                 }, this)
             },
             text: function (text) {
                 return text !== undefined ?
-                    this.each(function (idx) {
+                    this.each(function () {
                         var newText = text;
                         this.textContent = this.innerText = newText;
                     }) :
