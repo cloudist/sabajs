@@ -1,6 +1,6 @@
 # SabaJS
 
-![SabaJS](vendor/SabaJS.png)
+![SabaJS](vendor/sabajs-logo.png)
 
 SabaJS is a light-weight cross-platform JavaScript library that provides some frequently used functions.
 
