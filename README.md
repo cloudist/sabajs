@@ -289,3 +289,8 @@ None
 
     _.el(selector).removeAttr('id');
     _.el(selector).attr('id') === undefined => true;
+
+
+## License
+
+MIT License, see the included file.  
